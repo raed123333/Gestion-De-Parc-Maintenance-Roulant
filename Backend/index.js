@@ -4,6 +4,7 @@ import cors from 'cors';
 import { Port } from './config.js';
 import {mongoDBURL} from './config.js';
 import RequestRepair from './Routes/RequestRepair.js';
+import MaintenancePlan from './Routes/MaintenancePlan.js';
 
 const app = express();
 //middleware for parsing requests body 
@@ -13,15 +14,15 @@ app.use(express.json());
 app.use(cors());
 
 //just for test backend 
-app.get('/',(req,res) => {
+/*app.get('/',(req,res) => {
         console.log(req);
         return res.status(234).send("harbi weld el coba");
-})
+})*/
 
 
 
 app.use('/requestrepair', RequestRepair);
-
+app.use('/maintenancePlan', MaintenancePlan);
 
 
 

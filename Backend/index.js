@@ -6,13 +6,19 @@ import {mongoDBURL} from './config.js';
 import RequestRepair from './Routes/RequestRepair.js';
 import MaintenancePlan from './Routes/MaintenancePlan.js';
 import DriverPanel from './Routes/DriverPanel.js';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 //middleware for parsing requests body 
 app.use(express.json());
+app.use(cookieParser());
 
-
-app.use(cors());
+app.use(cors(
+        {
+                origin: "http://localhost:5173",
+                credentials: true,
+        }
+));
 
 //just for test backend 
 /*app.get('/',(req,res) => {

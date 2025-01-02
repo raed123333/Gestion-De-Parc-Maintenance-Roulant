@@ -2,6 +2,7 @@ import express from "express";
 import DriverModel from "../Models/Driver.js";
 const router =express.Router();
 
+
 //Route for save a new driver
 
 router.post('/', async (req, res) => {
@@ -98,7 +99,7 @@ const renewToken=(req,res)=>{
         return exist;
     
     }
-    router.get('/dashboarDriver',varifyDriver,(req, res) => {
+    router.get('/dashboardDriver',varifyDriver,(req, res) => {
         return res.json({valid:true, message:"authentication"})
     })
     

@@ -5,6 +5,7 @@ import { Port } from './config.js';
 import {mongoDBURL} from './config.js';
 import RequestRepair from './Routes/RequestRepair.js';
 import MaintenancePlan from './Routes/MaintenancePlan.js';
+import DriverPanel from './Routes/DriverPanel.js';
 
 const app = express();
 //middleware for parsing requests body 
@@ -23,6 +24,7 @@ app.use(cors());
 
 app.use('/requestrepair', RequestRepair);
 app.use('/maintenancePlan', MaintenancePlan);
+app.use('/driver',DriverPanel);
 
 
 

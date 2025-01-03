@@ -6,6 +6,7 @@ import RequestRepair from "./Routes/RequestRepair.js";
 import MaintenancePlan from "./Routes/MaintenancePlan.js";
 import DriverPanel from "./Routes/DriverPanel.js";
 import cookieParser from "cookie-parser";
+import AdminPanel from "./Routes/AdminPanel.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(cors({
 app.use("/requestrepair", RequestRepair);
 app.use("/maintenancePlan", MaintenancePlan);
 app.use("/driver", DriverPanel);
+app.use("/admin", AdminPanel);
 
 // MongoDB connection and server start
 mongoose.connect(mongoDBURL)

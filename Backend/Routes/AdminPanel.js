@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import DriverModel from "../Models/Driver.js";
+import AdminModel from '../Models/Admin.js';
 
 
 const router = express.Router();
@@ -17,84 +17,21 @@ router.post("/", async (req, res) => {
     if (!FirstName || !LastName || !RegistrationNumber || !Email || !Password) {
       return res.status(400).json({ msg: "Please fill all fields" });
     }
-    const newDriver = new DriverModel({ FirstName, LastName, RegistrationNumber, Email, Password });
-    const driver = await newDriver.save();
+    const newAdmin = new AdminModel({ FirstName, LastName, RegistrationNumber, Email, Password });
+    const admin = await newAdmin.save();
     return res.json(driver);
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
-}); 
-// route to get all the driver driver
-
-router.get('/', async (req,res)=>{
-        try{
-                const drivers = await DriverModel.find({});
-                return res.status(200).json({
-                        count:drivers.length,
-                        data:drivers,
-                });
-        }catch(err){
-                console.error(err.message);
-                res.status(500).send('Server Error');
-        }
-}) 
-// route to get driver
-
-router.get('/:id', async (req,res)=>{
-        try{
-                const driver = await DriverModel.findById(req.params.id);
-                if(!driver){
-                        return res.status(404).json({msg: 'Driver not found'});
-                }
-                return res.status(200).json(driver);
-        }catch(err){
-                console.error(err.message);
-                if(err.kind === 'ObjectId'){
-                        return res.status(404).json({msg: 'Driver not found'});
-                }
-                res.status(500).send('Server Error');
-        }
-})
-//route to update a driver
-
-router.put('/:id', async (req,res)=>{
-        try{
-                const driver = await DriverModel.findByIdAndUpdate(req.params.id,req.body);
-                if(!driver){
-                        return res.status(404).json({msg: 'Driver not found'});
-                }
-                return res.status(200).send({ message: 'Driver update successfully ' });
-
-        }catch(err){
-                return res.status(500).send({message: err.message});
-        }
-
-})
-
-//route to delete a driver
-
-router.delete('/:id', async (req,res)=>{
-        try{
-                const driver = await DriverModel.findByIdAndDelete(req.params.id);
-                if(!driver){
-                        return res.status(404).json({message: 'Driver not found'});
-                }
-                return res.status(200).send({ message: 'Driver deleted successfully ' });
-
-        }catch(err){
-                return res.status(500).send({message: err.message});
-        }
-
-})
-
+});
 
 // Route to login a driver
-router.post('/login', async (req, res) => {
+router.post('/loginAdmin', async (req, res) => {
     const {Email,Password} =req.body;
-    DriverModel.findOne({Email})
-    .then(driver=>{
-            if(driver){
-                    if(driver.Password === Password){
+    AdminModel.findOne({Email})
+    .then(admin=>{
+            if(admin){
+                    if(admin.Password === Password){
                             const accessToken = jwt.sign({ Email: Email }, "jwt-access-token-secret-key", { expiresIn: '1m' });
                             const refreshToken = jwt.sign({ Email: Email }, "jwt-refresh-token-secret-key", { expiresIn: '5m' });
                             res.cookie('accessToken', accessToken, { maxAge: 60000, secure: false }); 

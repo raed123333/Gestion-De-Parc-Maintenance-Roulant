@@ -24,6 +24,69 @@ router.post("/", async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+//route to get all admin
+
+router.get('/', async (req,res)=>{
+        try{
+                const admins = await AdminModel.find({});
+                return res.status(200).json({
+                        count:admins.length,
+                        data:admins,
+                });
+        }catch(err){
+                console.error(err.message);
+                res.status(500).send('Server Error');
+        }
+})
+// get admin by id
+
+router.get('/:id', async (req,res)=>{
+        try{
+                const admin = await AdminModel.findById(req.params.id);
+                if(!admin){
+                        return res.status(404).json({msg: 'Admin not found'});
+                }
+                res.status(200).json(admin);
+        }catch(err){
+                console.error(err.message);
+                if(err.kind === 'ObjectId'){
+                        return res.status(404).json({msg: 'Admin not found'});
+                }
+                res.status(500).send('Server Error');
+        }
+})
+
+// update admin by id
+
+router.put('/:id', async (req,res)=>{
+        try{
+                const admin = await AdminModel.findByIdAndUpdate(req.params.id,req.body,{new: true});
+                if(!admin){
+                        return res.status(404).json({msg: 'Admin not found'});
+                }
+                res.status(200).json(admin);
+        }catch(err){
+                console.error(err.message);
+                if(err.kind === 'ObjectId'){
+                        return res.status(404).json({msg: 'Admin not found'});
+                }
+                res.status(500).send('Server Error');
+        }
+})
+// delete admin by id
+
+router.delete('/:id', async (req,res)=>{
+        try{
+                const admin = await AdminModel.findByIdAndDelete(req.params.id);
+                if(!admin){
+                        return res.status(404).json({msg: 'Admin not found'});
+                }
+                res.status(200).json({ message: 'Admin deleted successfully ' });
+        }catch(err){
+                console.error(err.message);
+                res.status(500).send('Server Error');
+        }
+})
 
 // Route to login a driver
 router.post('/loginAdmin', async (req, res) => {

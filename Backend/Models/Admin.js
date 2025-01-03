@@ -5,6 +5,7 @@ const AdminSchema=new mongoose.Schema({
         RegistrationNumber:String,
         Email:String,
         Password:String
+      
 })
 const AdminModel=mongoose.model("Admin",AdminSchema);
 export default AdminModel

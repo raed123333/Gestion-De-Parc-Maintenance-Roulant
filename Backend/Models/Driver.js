@@ -6,6 +6,7 @@ const DriverSchema = new mongoose.Schema({
         Email:String,
         Password:String
         
+        
 })
 
 const DriverModel=mongoose.model("Driver",DriverSchema);

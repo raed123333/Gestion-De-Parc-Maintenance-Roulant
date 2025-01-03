@@ -1,39 +1,28 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import { Port } from './config.js';
-import {mongoDBURL} from './config.js';
-import RequestRepair from './Routes/RequestRepair.js';
-import MaintenancePlan from './Routes/MaintenancePlan.js';
-import DriverPanel from './Routes/DriverPanel.js';
-import cookieParser from 'cookie-parser';
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import { Port, mongoDBURL } from "./config.js";
+import RequestRepair from "./Routes/RequestRepair.js";
+import MaintenancePlan from "./Routes/MaintenancePlan.js";
+import DriverPanel from "./Routes/DriverPanel.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
-//middleware for parsing requests body 
+
+// Middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
 
-app.use(cors(
-        {
-                origin: "http://localhost:5173",
-                credentials: true,
-        }
-));
+// Routes
+app.use("/requestrepair", RequestRepair);
+app.use("/maintenancePlan", MaintenancePlan);
+app.use("/driver", DriverPanel);
 
-//just for test backend 
-/*app.get('/',(req,res) => {
-        console.log(req);
-        return res.status(234).send("harbi weld el coba");
-})*/
-
-
-
-app.use('/requestrepair', RequestRepair);
-app.use('/maintenancePlan', MaintenancePlan);
-app.use('/driver',DriverPanel);
-
-
-
+// MongoDB connection and server start
 mongoose.connect(mongoDBURL)
         .then(()=>{
                 console.log('Connected to MongoDB...');
@@ -41,9 +30,3 @@ mongoose.connect(mongoDBURL)
  
         })
         .catch((error) => console.error(`Error connecting to MongoDB: ${error}`));
-
-
-
-
-
-

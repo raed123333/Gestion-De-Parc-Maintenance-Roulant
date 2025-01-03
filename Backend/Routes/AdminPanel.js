@@ -89,7 +89,7 @@ router.delete('/:id', async (req,res)=>{
 })
 
 // Route to login a driver
-router.post('/loginAdmin', async (req, res) => {
+router.post('/login', async (req, res) => {
     const {Email,Password} =req.body;
     AdminModel.findOne({Email})
     .then(admin=>{

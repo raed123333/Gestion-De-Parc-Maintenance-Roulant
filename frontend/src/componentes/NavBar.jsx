@@ -11,9 +11,9 @@ const NavBar = () => {
           <a href="#" className="text-white no-underline ">
             Home
           </a>
-          <Link href="#about" className=" text-white no-underline ">
+          <a href="#Footer" className=" text-white no-underline ">
             About Me
-          </Link>
+          </a>
           <a href="#services" className="text-white no-underline ">
             Services
           </a>

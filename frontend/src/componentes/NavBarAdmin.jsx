@@ -2,11 +2,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBarAdmin = () => {
   return (
     <nav className="bg-[#568F9C] text-white px-8 md:px-16 lg:px-24 fixed top-0 w-full z-50">
       <div className="container py-2 flex justify-center md:justify-between items-center  ">
-        <div className="text-2xl font-bold hidden md:inline ">Onas</div>
+        <div className="text-2xl font-bold hidden md:inline ">Admin Panel</div>
         <div className=" space-x-6 text-white  ">
           <a href="#" className="text-white no-underline ">
             Home
@@ -30,4 +30,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NavBarAdmin;

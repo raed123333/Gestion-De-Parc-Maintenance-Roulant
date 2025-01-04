@@ -31,8 +31,8 @@ const Login = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-      <div className="bg-white p-3 rounded w-25">
+    <div className="d-flex justify-content-center align-items-center bg-[#8CC3CA]  vh-100">
+      <div className="bg-[#568F9C] p-3 rounded w-25 text-white">
         <h2>Login Admin</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">

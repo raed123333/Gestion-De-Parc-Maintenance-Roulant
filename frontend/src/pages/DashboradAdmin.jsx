@@ -34,7 +34,7 @@ const DashboradDriver = () => {
         <>
           <h1>Dashboard Admin</h1>
           <p>{message}</p>
-          <h1>a7la rouda</h1>
+          <h1>wa m.ons echtheb</h1>
         </>
       ) : (
         <h1>not auth</h1>

@@ -8,9 +8,9 @@ const NavBar = () => {
       <div className="container py-2 flex justify-center md:justify-between items-center  ">
         <div className="text-2xl font-bold hidden md:inline ">Onas</div>
         <div className=" space-x-6 text-white  ">
-          <Link to="/" className="text-white no-underline ">
+          <a href="#" className="text-white no-underline ">
             Home
-          </Link>
+          </a>
           <Link href="#about" className=" text-white no-underline ">
             About Me
           </Link>

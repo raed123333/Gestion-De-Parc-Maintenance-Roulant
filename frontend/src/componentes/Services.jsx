@@ -4,33 +4,36 @@ const services = [
   {
     id: 1,
     title: "Wastewater Management ",
-    description: "Creating visually appealing and User-friendly web designs.",
+    description:
+      "Treatment and purification of wastewater to protect the environment and public health.",
   },
   {
     id: 2,
     title: "Liquid Waste Disposal ",
-    description: "Building responsive and interactive user interfaces.",
+    description: "Safe and sustainable treatment and disposal of liquid waste.",
   },
   {
     id: 3,
     title: "Treatment Plant Maintenance",
-    description: "Developing robust server-side logic and databases.",
+    description:
+      "Maintenance and upgrades of wastewater treatment plants to ensure optimal performance.",
   },
   {
     id: 4,
-    title: "Full-stack development",
-    description: "Combining both frontend and backend development skills.",
+    title: "Water Quality Monitoring",
+    description: " Regular testing of water quality in various ecosystems.",
   },
   {
     id: 5,
-    title: "Designer",
-    description: "Crafting impactful visuals and brand identities.",
+    title: "Environmental Awareness",
+    description:
+      " Public awareness campaigns to educate the community on the importance of water",
   },
   {
     id: 6,
-    title: "Video Editor",
+    title: "Sustainable Development ",
     description:
-      "Building compelling visuals and seamless visual montages to elevate brand identity.",
+      " Implementation of projects to improve wastewater infrastructure ",
   },
 ];
 const Services = () => {

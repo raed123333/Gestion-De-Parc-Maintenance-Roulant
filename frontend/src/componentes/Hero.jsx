@@ -4,7 +4,7 @@ import onas from "../assets/onas.png";
 
 const Hero = () => {
   return (
-    <div className="bg-[#8CC3CA] text-white text-center py-16" id="#Hero">
+    <div className="bg-[#8CC3CA] text-white text-center py-16">
       <img
         src={onas}
         alt=""

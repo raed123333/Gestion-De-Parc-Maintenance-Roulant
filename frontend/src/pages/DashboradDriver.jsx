@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import NavBarDriver from "../componentes/NavBarDriver";
 const DashboradDriver = () => {
   const [message, setMessage] = useState();
   let isUser = localStorage.getItem("token");
@@ -32,9 +32,8 @@ const DashboradDriver = () => {
     <div>
       {isUser ? (
         <>
-          <h1>Dashboard Driver</h1>
+          <NavBarDriver />
           <p>{message}</p>
-          <h1>hhhhhhhhhhhhhhhhhhhhhhhhhh</h1>
         </>
       ) : (
         <h1>not auth</h1>

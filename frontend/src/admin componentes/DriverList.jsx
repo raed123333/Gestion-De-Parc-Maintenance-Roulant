@@ -9,7 +9,6 @@ import DriverTable from "./DriverTable";
 const DriverList = () => {
   const [drivers, setDrivers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [showType, setShowType] = useState("table");
 
   useEffect(() => {
     setLoading(true);
@@ -34,13 +33,7 @@ const DriverList = () => {
             <MdOutlineAddBox className="text-sky-800 text-4xl" />
           </Link>
         </div>
-        {loading ? (
-          <Spinner />
-        ) : showType === "table" ? (
-          <DriverTable drivers={drivers} />
-        ) : (
-          <p>No other view is implemented yet!</p>
-        )}
+        {loading ? <Spinner /> : <DriverTable drivers={drivers} />}
       </div>
     </div>
   );

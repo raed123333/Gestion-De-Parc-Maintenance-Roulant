@@ -37,7 +37,7 @@ const DriverTable = ({ drivers }) => {
                 <Link to={`/drivers/details/${driver._id}`}>
                   <BsInfoCircle className="text-2xl text-green-800" />
                 </Link>
-                <Link to={`/drivers/edit/${driver._id}`}>
+                <Link to={`/dashboradAdmin/editDriver/${driver._id}`}>
                   <AiOutlineEdit className="text-2xl text-yellow-600" />
                 </Link>
                 <Link to={`/dashboradAdmin/deleteDriver/${driver._id}`}>

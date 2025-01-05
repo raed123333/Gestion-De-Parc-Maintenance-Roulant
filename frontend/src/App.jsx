@@ -10,6 +10,7 @@ import DashboradAdmin from "./pages/DashboradAdmin";
 import CreateDriver from "./admin componentes/CreateDriver";
 import DeleteDriver from "./admin componentes/DeleteDriver";
 import EditDriver from "./admin componentes/EditDriver";
+import ShowDriver from "./admin componentes/ShowDriver";
 const App = () => {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ const App = () => {
           path="/dashboradAdmin/deleteDriver/:id"
           element={<DeleteDriver />}
         />
+        <Route path="/dashboradAdmin/showDriver/:id" element={<ShowDriver />} />
       </Routes>
     </BrowserRouter>
   );

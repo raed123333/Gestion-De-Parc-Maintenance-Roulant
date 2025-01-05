@@ -34,7 +34,7 @@ const DriverTable = ({ drivers }) => {
             </td>
             <td className="border border-slate-700 rounded-md text-center">
               <div className="flex justify-center gap-x-4">
-                <Link to={`/drivers/details/${driver._id}`}>
+                <Link to={`/dashboradAdmin/showDriver/${driver._id}`}>
                   <BsInfoCircle className="text-2xl text-green-800" />
                 </Link>
                 <Link to={`/dashboradAdmin/editDriver/${driver._id}`}>

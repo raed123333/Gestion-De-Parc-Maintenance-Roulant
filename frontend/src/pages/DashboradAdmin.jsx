@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import NavBarAdmin from "../componentes/NavBarAdmin";
+import DriverList from "../admin componentes/DriverList";
 
 const DashboradDriver = () => {
   const [message, setMessage] = useState();
@@ -34,6 +35,8 @@ const DashboradDriver = () => {
       {isUser ? (
         <>
           <NavBarAdmin />
+          <DriverList />
+
           <p>{message}</p>
         </>
       ) : (

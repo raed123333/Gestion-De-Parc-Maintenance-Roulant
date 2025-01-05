@@ -8,6 +8,7 @@ import DashboradDriver from "./pages/DashboradDriver";
 import LoginAdmin from "./pages/LoginAdmin";
 import DashboradAdmin from "./pages/DashboradAdmin";
 import CreateDriver from "./admin componentes/CreateDriver";
+import DeleteDriver from "./admin componentes/DeleteDriver";
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,6 +19,10 @@ const App = () => {
         <Route path="/loginAdmin" element={<LoginAdmin />} />
         <Route path="/dashboradAdmin" element={<DashboradAdmin />} />
         <Route path="/dashboradAdmin/createDriver" element={<CreateDriver />} />
+        <Route
+          path="/dashboradAdmin/deleteDriver/:id"
+          element={<DeleteDriver />}
+        />
       </Routes>
     </BrowserRouter>
   );

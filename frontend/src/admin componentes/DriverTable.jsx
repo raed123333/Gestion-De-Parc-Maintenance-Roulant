@@ -40,7 +40,7 @@ const DriverTable = ({ drivers }) => {
                 <Link to={`/drivers/edit/${driver._id}`}>
                   <AiOutlineEdit className="text-2xl text-yellow-600" />
                 </Link>
-                <Link to={`/drivers/delete/${driver._id}`}>
+                <Link to={`/dashboradAdmin/deleteDriver/${driver._id}`}>
                   <MdOutlineDelete className="text-2xl text-red-600" />
                 </Link>
               </div>

@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import DashboradDriver from "./pages/DashboradDriver";
 import LoginAdmin from "./pages/LoginAdmin";
 import DashboradAdmin from "./pages/DashboradAdmin";
-
+import CreateDriver from "./admin componentes/CreateDriver";
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,6 +17,7 @@ const App = () => {
         <Route path="/dashboradDriver" element={<DashboradDriver />} />
         <Route path="/loginAdmin" element={<LoginAdmin />} />
         <Route path="/dashboradAdmin" element={<DashboradAdmin />} />
+        <Route path="/dashboradAdmin/createDriver" element={<CreateDriver />} />
       </Routes>
     </BrowserRouter>
   );

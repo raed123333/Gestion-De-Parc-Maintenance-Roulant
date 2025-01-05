@@ -29,7 +29,7 @@ const DriverList = () => {
       <div className="p-4">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl my-8">Driver List</h1>
-          <Link to="/drivers/create">
+          <Link to="/dashboradAdmin/createDriver">
             <MdOutlineAddBox className="text-sky-800 text-4xl" />
           </Link>
         </div>

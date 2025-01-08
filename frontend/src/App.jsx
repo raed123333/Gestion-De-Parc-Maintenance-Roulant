@@ -13,6 +13,7 @@ import EditDriver from "./admin componentes/EditDriver";
 import ShowDriver from "./admin componentes/ShowDriver";
 import RepairDisplay from "./componentes/RepairRequest/RepairDisplay";
 import CreateRepair from "./componentes/RepairRequest/CreateRepair";
+import DeleteRepair from "./componentes/RepairRequest/DeleteRepair";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/dashboradAdmin/showDriver/:id" element={<ShowDriver />} />
         <Route path="/Repair" element={<RepairDisplay />} />
         <Route path="/createRepair" element={<CreateRepair />} />
+        <Route path="/deleteRepair/:id" element={<DeleteRepair />} />
       </Routes>
     </BrowserRouter>
   );

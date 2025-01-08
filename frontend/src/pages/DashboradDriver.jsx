@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import NavBarDriver from "../componentes/NavBarDriver";
+import RepairDisplay from "../componentes/RepairRequest/RepairDisplay";
 const DashboradDriver = () => {
   const [message, setMessage] = useState();
   let isUser = localStorage.getItem("token");
@@ -33,6 +34,8 @@ const DashboradDriver = () => {
       {isUser ? (
         <>
           <NavBarDriver />
+          <RepairDisplay />
+
           <p>{message}</p>
         </>
       ) : (

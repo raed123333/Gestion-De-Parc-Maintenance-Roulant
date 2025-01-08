@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
     }
     const newAdmin = new AdminModel({ FirstName, LastName, RegistrationNumber, Email, Password });
     const admin = await newAdmin.save();
-    return res.json(driver);
+    return res.json(admin);
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }

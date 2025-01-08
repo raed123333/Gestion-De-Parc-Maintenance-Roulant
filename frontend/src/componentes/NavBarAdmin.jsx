@@ -14,9 +14,12 @@ const NavBarAdmin = () => {
           <a href="#services" className="text-white no-underline ">
             Services
           </a>
-          <a href="#Footer" className=" text-white no-underline ">
-            About Us
-          </a>
+          <Link
+            to="/dashboradAdmin/adminTable"
+            className=" text-white no-underline "
+          >
+            Admin List
+          </Link>
 
           <Link to="/login" className="text-white no-underline">
             Driver

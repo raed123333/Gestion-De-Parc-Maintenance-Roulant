@@ -1,45 +1,58 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import { FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
+
 const Footer = () => {
   return (
-    <footer className="bg-[#8CC3CA] text-white y-8" id="Footer">
+    <footer
+      className="bg-gradient-to-r from-teal-600 to-blue-500 text-white py-8"
+      id="Footer"
+    >
       <div className="container mx-auto px-8 md:px-16 lg:px-24">
-        <div className="flex flex-col md:flex-row md:space-x-12 items-center mb-4">
-          <div className="flex-1 mb-4 md:mb-0">
-            <h3 className="text-2xl font-bold mb-2">
+        <div className="flex flex-col md:flex-row md:space-x-12 items-center mb-8">
+          <div className="flex-1 mb-6 md:mb-0">
+            <h3 className="text-3xl font-bold mb-2">
               The National Sanitation Office
             </h3>
-            <h4 className="text-[#568F9C]">
+            <p className="text-gray-200">
               Ensuring wastewater management and sustainability for a healthier
-              Tunisia
-            </h4>
+              Tunisia.
+            </p>
           </div>
         </div>
-        <div className="border-t border-gray-600 pt-4 flex flex-col md:flex-raw">
-          <p className="text-black">
-            &copy;{new Date().getFullYear()} ONAS Tunisia . All rigths reserved
+
+        <div className="border-t border-gray-300 pt-6 flex flex-col md:flex-row items-center justify-between">
+          <p className="text-gray-100 text-center md:text-left">
+            &copy; {new Date().getFullYear()} ONAS Tunisia. All rights reserved.
           </p>
-          <div className="flex space-x-4 my-4 md:my-0 ">
+          <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="https://www.facebook.com/ONASTUNISIE"
-              className="text-gray-400 hover:text-white text-2xl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-blue-400 text-2xl transition-colors duration-300"
             >
               <FaFacebook />
             </a>
-            <a href="" className="text-gray-400 hover:text-white text-2xl">
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-blue-300 text-2xl transition-colors duration-300"
+            >
               <FaLinkedin />
             </a>
-
-            <a href="" className="text-gray-400 hover:text-white text-2xl">
+            <a
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-red-400 text-2xl transition-colors duration-300"
+            >
               <FaYoutube />
             </a>
           </div>
         </div>
       </div>
-      <br />
-      <br />
-      <br />
     </footer>
   );
 };

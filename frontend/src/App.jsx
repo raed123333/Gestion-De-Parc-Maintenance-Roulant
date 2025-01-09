@@ -18,6 +18,7 @@ import EditRepair from "./componentes/RepairRequest/EditRepair";
 import DisplayMaintenancePlans from "./Maintenance components/DisplayMaintenancePlans";
 import DeleteMaintenancePlan from "./Maintenance components/DeleteMaintenancePlan";
 import UpdateMaintenancePlan from "./Maintenance components/UpdateMaintenancePlan";
+import CreateMaintenancePlan from "./Maintenance components/CreateMaintenancePlan";
 const App = () => {
   return (
     <BrowserRouter>
@@ -46,6 +47,10 @@ const App = () => {
         <Route
           path="/maintenancePlans/updateMaintenancePlan/:id"
           element={<UpdateMaintenancePlan />}
+        />
+        <Route
+          path="/maintenancePlans/createMaintenancePlan"
+          element={<CreateMaintenancePlan />}
         />
       </Routes>
     </BrowserRouter>

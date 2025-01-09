@@ -6,6 +6,7 @@ const router = express.Router();
 //route for save new maintenance plan
 
 router.post('/',async (req,res)=>{
+        console.log(req.body);
         try{
                 if(
                         !req.body.car_id||

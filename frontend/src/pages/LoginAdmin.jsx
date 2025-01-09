@@ -18,7 +18,6 @@ const Login = () => {
       .then((res) => {
         if (res.data.Login) {
           localStorage.setItem("token", res.data.token);
-
           navigate("/dashboradAdmin");
           console.log("Navigated to dashboard");
         } else {
@@ -31,36 +30,53 @@ const Login = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-[#8CC3CA]  vh-100">
-      <div className="bg-[#568F9C] p-3 rounded w-25 text-white">
-        <h2>Login Admin</h2>
+    <div className="bg-[#16C47F]  text-white min-h-screen flex items-center justify-center">
+      <div className="bg-[#79D7BE] p-8 rounded-lg shadow-lg w-full max-w-lg text-center">
+        <h2 className="text-4xl font-bold mb-6">Welcome Back!</h2>
+        <p className="text-lg mb-8">
+          Login to access the admin dashboard and manage your workflow.
+        </p>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email">
-              <strong>Email</strong>
+          <div className="mb-6">
+            <label
+              htmlFor="email"
+              className="block text-lg font-semibold mb-2 text-left"
+            >
+              Email Address
             </label>
             <input
               type="email"
+              id="email"
               placeholder="Enter your email..."
-              className="form-control rounded-0"
+              className="w-full p-3 rounded-lg text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#8CC3CA]"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="mb-3">
-            <label htmlFor="password">
-              <strong>Password</strong>
+          <div className="mb-6">
+            <label
+              htmlFor="password"
+              className="block text-lg font-semibold mb-2 text-left"
+            >
+              Password
             </label>
             <input
               type="password"
+              id="password"
               placeholder="Enter your password..."
-              className="form-control rounded-0"
+              className="w-full p-3 rounded-lg text-black border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#8CC3CA]"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn btn-success w-100 rounded-0">
+          <button
+            type="submit"
+            className="w-full bg-[#16C47F] text-white font-semibold py-3 rounded-lg hover:bg-[#6AA9B5] transition-all duration-300"
+          >
             Login
           </button>
         </form>
+        <p className="mt-8 text-sm text-gray-300">
+          Having trouble logging in? Contact support.
+        </p>
       </div>
     </div>
   );

@@ -4,32 +4,46 @@ import onas from "../assets/onas.png";
 
 const Hero = () => {
   return (
-    <div className="bg-[#8CC3CA] text-white text-center py-16">
+    <div className="bg-gradient-to-r from-green-400 to-teal-500 text-white text-center py-16">
+      {/* Image Section */}
       <img
         src={onas}
-        alt=""
+        alt="ONAS Tunisia"
         className="mx-auto mb-12 mt-20 w-80 rounded-full object-cover transform 
-        transition-transform duration-300 hover:scale-105 "
+                   transition-transform duration-300 hover:scale-105 shadow-lg"
       />
+
+      {/* Title Section */}
       <h1 className="text-4xl font-bold">
-        Welcome to {""}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#568F9C] to-[#4BA4B8]">
-          ONAS Tunisia platform!
+        Welcome to{" "}
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-500">
+          ONAS Tunisia Platform!
         </span>
-        ,Efficient wastewater management ,<br /> environmental protection to
-        promote public health in Tunisia
       </h1>
-      <p className="mt-4 text-lg text-gray-100">
+      <h2 className="mt-2 text-xl font-light">
+        Efficient wastewater management, environmental protection to promote
+        public health in Tunisia
+      </h2>
+
+      {/* Subtitle */}
+      <p className="mt-6 text-lg text-gray-100">
         Ensuring wastewater management and sustainability for a healthier
-        Tunisia
+        Tunisia.
       </p>
+
+      {/* Call-to-Action Button */}
       <div className="mt-8 space-x-4">
-        <a href="https://www.facebook.com/ONASTUNISIE">
+        <a
+          href="https://www.facebook.com/ONASTUNISIE"
+          className="no-underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <button
-            className="bg-gradient-to-r from-[#568F9C] to-[#4BA4B8] text-white hidden md:inline 
-                 transform transition-transform duration-300 hover:scale-105 px-4 py-2 rounded-full"
+            className="bg-teal-700 text-white px-6 py-3 rounded-full shadow-md 
+                       transform transition-transform duration-300 hover:scale-105 hover:bg-teal-800 hidden md:inline-block"
           >
-            Join us in facebook
+            Join Us on Facebook
           </button>
         </a>
       </div>

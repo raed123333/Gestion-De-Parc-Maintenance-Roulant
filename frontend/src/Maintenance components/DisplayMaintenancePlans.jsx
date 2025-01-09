@@ -42,6 +42,12 @@ const DisplayMaintenancePlans = () => {
         <div className="flex justify-between items-center">
           <h1 className="text-3xl my-8">Maintenance Plan List</h1>
         </div>
+        <Link
+          to="/maintenancePlans/createMaintenancePlan"
+          className="text-white no-underline hover:text-gray-200 transition-colors duration-300"
+        >
+          Maintenance Plan Create
+        </Link>
 
         {loading ? (
           <Spinner />

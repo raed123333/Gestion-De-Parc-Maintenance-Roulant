@@ -1,59 +1,51 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../Spinner";
+import Spinner from "../componentes/Spinner";
 
-const CreateRepair = () => {
+const CreateMaintenancePlan = () => {
   const [driverName, setDriverName] = useState("");
-  const [car, setCar] = useState("");
   const [carId, setCarId] = useState("");
-  const [carType, setCarType] = useState("");
-  const [carModel, setCarModel] = useState("");
-  const [reclamation, setReclamation] = useState("");
+  const [amount, setAmount] = useState("");
+  const [breakdownType, setBreakdownType] = useState("");
+  const [startDate, setStartDate] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSaveRepair = () => {
+  const handleSaveMaintenancePlan = () => {
     // Check if any field is empty
-    if (
-      !driverName ||
-      !car ||
-      !carId ||
-      !carType ||
-      !carModel ||
-      !reclamation
-    ) {
+    if (!driverName || !carId || !amount || !breakdownType || !startDate) {
       alert("Please fill out this form");
       return; // Exit function to prevent further actions
     }
 
     const data = {
-      DriverName: driverName,
-      car: car,
-      car_id: carId,
-      car_type: carType,
-      car_model: carModel,
-      reclamation: reclamation,
+      driver_name: driverName,
+      car_id: parseInt(carId), // Convert carId to integer
+      amount: parseFloat(amount), // Ensure amount is treated as a number
+      breakdownt_type: breakdownType,
+      start_date: new Date(startDate), // Ensure start_date is in a valid Date format
     };
+    console.log(data);
 
     setLoading(true);
     axios
-      .post("http://localhost:5555/requestrepair", data, {
+      .post("http://localhost:5555/maintenancePlan", data, {
         headers: {
           "Content-Type": "application/json", // Ensure content type is set correctly
         },
       })
       .then(() => {
         setLoading(false);
-        alert("Repair request created successfully");
-        navigate("/dashboardDriver");
+        alert("Maintenance plan created successfully");
+        navigate("/dashboard"); // Navigate to a relevant page after success
       })
       .catch((error) => {
         setLoading(false);
         alert(
-          "Error: " +
-            (error.response ? error.response.data.message : error.message)
+          "Error: " + (error.response ? error.response.data.msg : error.message)
         );
         if (error.response) {
           console.log("Response error:", error.response.data); // Log response data from server for better debugging
@@ -67,7 +59,7 @@ const CreateRepair = () => {
   return (
     <div className="bg-[#8CC3CA] text-white text-center py-16">
       <div className="p-4">
-        <h1 className="text-3xl my-4">Add new Repair Request</h1>
+        <h1 className="text-3xl my-4">Add new Maintenance Plan</h1>
         {loading ? <Spinner /> : ""} {/* Show Spinner when loading */}
         <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
           <div className="my-4">
@@ -76,15 +68,6 @@ const CreateRepair = () => {
               type="text"
               value={driverName}
               onChange={(e) => setDriverName(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car</label>
-            <input
-              type="text"
-              value={car}
-              onChange={(e) => setCar(e.target.value)}
               className="border-2 border-gray-500 px-4 py-2 w-full text-black"
             />
           </div>
@@ -98,33 +81,36 @@ const CreateRepair = () => {
             />
           </div>
           <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car Type</label>
+            <label className="text-xl mr-4 text-gray-500">Amount</label>
             <input
-              type="text"
-              value={carType}
-              onChange={(e) => setCarType(e.target.value)}
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
               className="border-2 border-gray-500 px-4 py-2 w-full text-black"
             />
           </div>
           <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">state</label>
+            <label className="text-xl mr-4 text-gray-500">Breakdown Type</label>
             <input
               type="text"
-              value={carModel}
-              onChange={(e) => setCarModel(e.target.value)}
+              value={breakdownType}
+              onChange={(e) => setBreakdownType(e.target.value)}
               className="border-2 border-gray-500 px-4 py-2 w-full text-black"
             />
           </div>
           <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Reclamation</label>
+            <label className="text-xl mr-4 text-gray-500">Start Date</label>
             <input
-              type="text"
-              value={reclamation}
-              onChange={(e) => setReclamation(e.target.value)}
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
               className="border-2 border-gray-500 px-4 py-2 w-full text-black"
             />
           </div>
-          <button className="p-2 bg-sky-300 m-8" onClick={handleSaveRepair}>
+          <button
+            className="p-2 bg-sky-300 m-8"
+            onClick={handleSaveMaintenancePlan}
+          >
             Save
           </button>
         </div>
@@ -133,4 +119,4 @@ const CreateRepair = () => {
   );
 };
 
-export default CreateRepair;
+export default CreateMaintenancePlan;

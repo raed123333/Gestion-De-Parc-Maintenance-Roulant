@@ -24,8 +24,8 @@ const NavBarAdmin = () => {
           <Link to="/login" className="text-white no-underline">
             Driver
           </Link>
-          <Link to="/loginAdmin" className="text-white no-underline ">
-            Admin
+          <Link to="/maintenancePlans" className="text-white no-underline ">
+            Maintenance
           </Link>
         </div>
       </div>

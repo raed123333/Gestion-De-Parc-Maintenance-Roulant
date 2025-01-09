@@ -87,7 +87,9 @@ const DisplayMaintenancePlans = () => {
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
                     <div className="flex justify-center gap-x-4">
-                      <Link to={`/editMaintenancePlan/${plan._id}`}>
+                      <Link
+                        to={`/maintenancePlans/updateMaintenancePlan/${plan._id}`}
+                      >
                         <AiOutlineEdit className="text-2xl text-yellow-600" />
                       </Link>
                       <Link

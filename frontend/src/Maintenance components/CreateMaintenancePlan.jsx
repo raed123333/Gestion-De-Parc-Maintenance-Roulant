@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../componentes/Spinner";
+import { Spinner } from "react-bootstrap";
 
 const CreateMaintenancePlan = () => {
   const [driverName, setDriverName] = useState("");
@@ -57,61 +57,68 @@ const CreateMaintenancePlan = () => {
   };
 
   return (
-    <div className="bg-[#8CC3CA] text-white text-center py-16">
-      <div className="p-4">
-        <h1 className="text-3xl my-4">Add new Maintenance Plan</h1>
-        {loading ? <Spinner /> : ""} {/* Show Spinner when loading */}
-        <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Driver Name</label>
+    <div className="bg-gradient-to-r from-[#4ECDC4] to-[#1C4F4E] text-white min-h-screen flex items-center justify-center py-12">
+      <div className="bg-[#FFFBF0] p-10 rounded-xl shadow-2xl w-full max-w-lg">
+        <h2 className="text-3xl font-extrabold mb-6 text-[#1C4F4E]">
+          Create Maintenance Plan
+        </h2>
+        <p className="text-lg mb-8 text-[#6B8E23]">
+          Fill out the form below to create a new maintenance plan for your
+          vehicle.
+        </p>
+        {loading ? <Spinner animation="border" variant="primary" /> : ""}{" "}
+        {/* Show Spinner when loading */}
+        <div className="flex flex-col space-y-4">
+          <div>
+            <label className="text-xl text-[#1C4F4E]">Driver Name</label>
             <input
               type="text"
               value={driverName}
               onChange={(e) => setDriverName(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
+              className="border-2 border-[#4ECDC4] px-4 py-2 w-full text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4ECDC4]"
             />
           </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car ID</label>
+          <div>
+            <label className="text-xl text-[#1C4F4E]">Car ID</label>
             <input
-              type="text"
+              type="Number"
               value={carId}
               onChange={(e) => setCarId(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
+              className="border-2 border-[#4ECDC4] px-4 py-2 w-full text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4ECDC4]"
             />
           </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Amount</label>
+          <div>
+            <label className="text-xl text-[#1C4F4E]">Amount</label>
             <input
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
+              className="border-2 border-[#4ECDC4] px-4 py-2 w-full text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4ECDC4]"
             />
           </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Breakdown Type</label>
+          <div>
+            <label className="text-xl text-[#1C4F4E]">Breakdown Type</label>
             <input
               type="text"
               value={breakdownType}
               onChange={(e) => setBreakdownType(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
+              className="border-2 border-[#4ECDC4] px-4 py-2 w-full text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4ECDC4]"
             />
           </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Start Date</label>
+          <div>
+            <label className="text-xl text-[#1C4F4E]">Start Date</label>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
+              className="border-2 border-[#4ECDC4] px-4 py-2 w-full text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4ECDC4]"
             />
           </div>
           <button
-            className="p-2 bg-sky-300 m-8"
+            className="p-2 bg-[#1C4F4E] text-white font-semibold mt-6 rounded-lg hover:bg-[#4ECDC4] transition-all duration-300"
             onClick={handleSaveMaintenancePlan}
           >
-            Save
+            Save Maintenance Plan
           </button>
         </div>
       </div>

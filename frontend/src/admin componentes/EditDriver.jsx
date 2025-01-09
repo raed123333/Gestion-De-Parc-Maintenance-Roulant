@@ -30,10 +30,10 @@ const EditDriver = () => {
       })
       .catch((error) => {
         setLoading(false);
-        alert("error");
-        console.log(error);
+        alert("An error occurred while fetching driver details.");
+        console.error(error);
       });
-  }, [id]); // Dependency array ensures this effect runs when 'id' changes
+  }, [id]);
 
   const handleEditDriver = () => {
     const data = {
@@ -45,82 +45,108 @@ const EditDriver = () => {
     };
 
     setLoading(true);
-    // Update driver information
     axios
       .put(`http://localhost:5555/driver/${id}`, data)
       .then(() => {
         setLoading(false);
-        alert("Driver updated successfully");
-        navigate("/dashboradAdmin"); // Navigate back to the drivers list or home page
+        alert("Driver updated successfully.");
+        navigate("/dashboradAdmin");
       })
       .catch((error) => {
         setLoading(false);
-        alert("Error updating");
-        console.log(error);
+        alert("Error updating driver details.");
+        console.error(error);
       });
   };
 
   return (
-    <div className="bg-[#8CC3CA] text-white text-center py-16">
-      <BackButton />
-      <h1 className="text-3xl my-4">Edit Driver</h1>
-      {loading ? <Spinner /> : ""} {/* Show Spinner when loading */}
-      <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
-        {/* First Name Field */}
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">First Name</label>
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-          />
-        </div>
-        {/* Last Name Field */}
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Last Name</label>
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-          />
-        </div>
-        {/* Registration Number Field */}
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">
-            Registration Number
-          </label>
-          <input
-            type="text"
-            value={registrationNumber}
-            onChange={(e) => setRegistrationNumber(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-          />
-        </div>
-        {/* Email Field */}
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-          />
-        </div>
-        {/* Password Field */}
-        <div className="my-4">
-          <label className="text-xl mr-4 text-gray-500">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-          />
-        </div>
-        <button className="p-2 bg-sky-300 m-8" onClick={handleEditDriver}>
-          Save Changes
-        </button>
+    <div className="min-h-screen bg-gradient-to-b from-[#8CC3CA] to-[#57A0B5] text-white py-16 px-4">
+      <div className="max-w-3xl mx-auto bg-white text-black p-8 rounded-lg shadow-lg">
+        <BackButton />
+        <h1 className="text-3xl font-bold text-center text-gray-700 mb-8">
+          Edit Driver
+        </h1>
+        {loading ? (
+          <div className="flex justify-center">
+            <Spinner />
+          </div>
+        ) : (
+          <form className="space-y-6">
+            {/* First Name */}
+            <div>
+              <label className="block text-gray-600 text-lg mb-2">
+                First Name
+              </label>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full border-2 border-gray-300 p-3 rounded-lg focus:outline-none focus:border-sky-500"
+              />
+            </div>
+
+            {/* Last Name */}
+            <div>
+              <label className="block text-gray-600 text-lg mb-2">
+                Last Name
+              </label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full border-2 border-gray-300 p-3 rounded-lg focus:outline-none focus:border-sky-500"
+              />
+            </div>
+
+            {/* Registration Number */}
+            <div>
+              <label className="block text-gray-600 text-lg mb-2">
+                Registration Number
+              </label>
+              <input
+                type="text"
+                value={registrationNumber}
+                onChange={(e) => setRegistrationNumber(e.target.value)}
+                className="w-full border-2 border-gray-300 p-3 rounded-lg focus:outline-none focus:border-sky-500"
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-gray-600 text-lg mb-2">Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full border-2 border-gray-300 p-3 rounded-lg focus:outline-none focus:border-sky-500"
+              />
+            </div>
+
+            {/* Password */}
+            <div>
+              <label className="block text-gray-600 text-lg mb-2">
+                Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full border-2 border-gray-300 p-3 rounded-lg focus:outline-none focus:border-sky-500"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex justify-center">
+              <button
+                type="button"
+                onClick={handleEditDriver}
+                className="bg-sky-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-sky-500 focus:outline-none"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );

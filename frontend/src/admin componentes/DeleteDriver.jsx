@@ -1,49 +1,65 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
 import Spinner from "../componentes/Spinner";
 import BackButton from "../componentes/BackButton";
+
 const DeleteDriver = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
 
-  // function handleDeleteBooks for veryfied all steps
+  // Function to handle driver deletion
   const handleDeleteDriver = () => {
-    setLoading(true);
-    axios
-      .delete(`http://localhost:5555/driver/${id}`)
-      .then(() => {
-        alert("Driver deleted successfully");
-        setLoading(false);
-        navigate("/dashboradAdmin");
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-        alert("Error", { variant: "error" });
-        console.log(error);
-      });
+    if (window.confirm("Are you sure you want to delete this driver?")) {
+      setLoading(true);
+      axios
+        .delete(`http://localhost:5555/driver/${id}`)
+        .then(() => {
+          alert("Driver deleted successfully.");
+          setLoading(false);
+          navigate("/dashboradAdmin");
+        })
+        .catch((error) => {
+          console.error("Error deleting driver:", error);
+          setLoading(false);
+          alert("An error occurred while deleting the driver.");
+        });
+    }
   };
+
   return (
-    <div className="bg-[#8CC3CA] text-white text-center py-16">
-      <div className="p-4">
+    <div className="min-h-screen bg-gradient-to-b from-[#8CC3CA] to-[#57A0B5] text-white py-16 px-4">
+      <div className="max-w-md mx-auto bg-white text-black p-8 rounded-lg shadow-lg">
         <BackButton />
-        <h1 className="text-3xl my-4">Delete Driver </h1>
-        {loading ? <Spinner /> : ""}
-        <div className="flex flex-col items-center border-2 border-sky-400 rounded-xl w-[600px] p-8 mx-auto">
-          <h3 className="text-2xl">
-            Are you sure You want to delete this Driver?
-          </h3>
-          <button
-            className="p-4 bg-red-600 text-white m-8 w-full"
-            onClick={handleDeleteDriver}
-          >
-            Yes,Delete it
-          </button>
-        </div>
+        <h1 className="text-3xl font-bold text-center text-gray-700 mb-6">
+          Delete Driver
+        </h1>
+        {loading ? (
+          <div className="flex justify-center">
+            <Spinner />
+          </div>
+        ) : (
+          <div className="text-center">
+            <p className="text-lg text-gray-600 mb-6">
+              Are you sure you want to delete this driver? This action cannot be
+              undone.
+            </p>
+            <button
+              className="w-full bg-red-600 text-white py-3 rounded-lg shadow-md hover:bg-red-500 focus:outline-none"
+              onClick={handleDeleteDriver}
+            >
+              Yes, Delete it
+            </button>
+            <button
+              className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg shadow-md mt-4 hover:bg-gray-400 focus:outline-none"
+              onClick={() => navigate(-1)}
+            >
+              Cancel
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -34,70 +34,70 @@ const RepairDisplay = () => {
   }, []);
 
   return (
-    <div className="bg-[#8CC3CA] text-white text-center py-16">
-      <div className="p-4">
+    <div className="bg-gradient-to-r from-[#1e3c72] to-[#2a8b8b] text-white text-center py-16 min-h-screen">
+      <div className="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-lg">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl my-8">Repair List</h1>
+          <h1 className="text-4xl font-bold text-[#2a8b8b] mb-6">
+            Repair List
+          </h1>
         </div>
 
         {loading ? (
           <Spinner />
         ) : repairs.length > 0 ? (
-          <table className="w-full border-separate border-spacing-2">
-            <thead>
-              <tr>
-                <th className="border border-slate-600 rounded-md">No</th>
-                <th className="border border-slate-600 rounded-md">
-                  Driver Name
-                </th>
-                <th className="border border-slate-600 rounded-md">Car</th>
-                <th className="border border-slate-600 rounded-md">Car ID</th>
-                <th className="border border-slate-600 rounded-md">Car Type</th>
-                <th className="border border-slate-600 rounded-md">State</th>
-                <th className="border border-slate-600 rounded-md">
-                  Reclamation
-                </th>
-                <th className="border border-slate-600 rounded-md">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {repairs.map((repair, index) => (
-                <tr key={repair._id} className="h-8">
-                  <td className="border border-slate-700 rounded-md text-center">
-                    {index + 1}
-                  </td>
-                  <td className="border border-slate-700 rounded-md text-center">
-                    {repair.DriverName || "N/A"}
-                  </td>
-                  <td className="border border-slate-700 rounded-md text-center">
-                    {repair.car || "N/A"}
-                  </td>
-                  <td className="border border-slate-700 rounded-md text-center">
-                    {repair.car_id || "N/A"}
-                  </td>
-                  <td className="border border-slate-700 rounded-md text-center">
-                    {repair.car_type || "N/A"}
-                  </td>
-                  <td className="border border-slate-700 rounded-md text-center">
-                    {repair.car_model || "N/A"}
-                  </td>
-                  <td className="border border-slate-700 rounded-md text-center">
-                    {repair.reclamation || "N/A"}
-                  </td>
-                  <td className="border border-slate-700 rounded-md text-center">
-                    <div className="flex justify-center gap-x-4">
-                      <Link to={`/editRepair/${repair._id}`}>
-                        <AiOutlineEdit className="text-2xl text-yellow-600" />
-                      </Link>
-                      <Link to={`/deleteRepair/${repair._id}`}>
-                        <MdOutlineDelete className="text-2xl text-red-600" />
-                      </Link>
-                    </div>
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="table-auto w-full bg-[#F9FAFB] rounded-xl shadow-md border-collapse">
+              <thead className="bg-[#2a8b8b] text-white">
+                <tr>
+                  <th className="p-4 text-left">No</th>
+                  <th className="p-4 text-left">Driver Name</th>
+                  <th className="p-4 text-left">Car</th>
+                  <th className="p-4 text-left">Car ID</th>
+                  <th className="p-4 text-left">Car Type</th>
+                  <th className="p-4 text-left">State</th>
+                  <th className="p-4 text-left">Reclamation</th>
+                  <th className="p-4 text-left">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {repairs.map((repair, index) => (
+                  <tr key={repair._id} className="h-12 hover:bg-[#F0F9F9]">
+                    <td className="p-4 text-center border text-black border-slate-700">
+                      {index + 1}
+                    </td>
+                    <td className="p-4 text-center border text-black border-slate-700">
+                      {repair.DriverName || "N/A"}
+                    </td>
+                    <td className="p-4 text-center border text-black border-slate-700">
+                      {repair.car || "N/A"}
+                    </td>
+                    <td className="p-4 text-center border text-black border-slate-700">
+                      {repair.car_id || "N/A"}
+                    </td>
+                    <td className="p-4 text-center border text-black border-slate-700">
+                      {repair.car_type || "N/A"}
+                    </td>
+                    <td className="p-4 text-center border text-black border-slate-700">
+                      {repair.car_model || "N/A"}
+                    </td>
+                    <td className="p-4 text-center border text-black border-slate-700">
+                      {repair.reclamation || "N/A"}
+                    </td>
+                    <td className="p-4 text-center border border-slate-700">
+                      <div className="flex justify-center gap-x-4">
+                        <Link to={`/editRepair/${repair._id}`}>
+                          <AiOutlineEdit className="text-2xl text-yellow-600 hover:text-yellow-400 transition-all" />
+                        </Link>
+                        <Link to={`/deleteRepair/${repair._id}`}>
+                          <MdOutlineDelete className="text-2xl text-red-600 hover:text-red-400 transition-all" />
+                        </Link>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         ) : (
           <p className="text-xl text-center mt-4">No repairs found.</p>
         )}

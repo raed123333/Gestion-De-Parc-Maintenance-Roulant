@@ -24,12 +24,6 @@ const NavBarAdmin = () => {
             Repair
           </Link>
           <Link
-            to="/login"
-            className="text-white no-underline hover:text-gray-200 transition-colors duration-300"
-          >
-            Driver
-          </Link>
-          <Link
             to="/maintenancePlans"
             className="text-white no-underline hover:text-gray-200 transition-colors duration-300"
           >

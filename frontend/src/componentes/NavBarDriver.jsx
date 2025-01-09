@@ -25,12 +25,6 @@ const NavBarDriver = () => {
           >
             Create Repair
           </Link>
-          <Link
-            to="/login"
-            className="hover:text-blue-300 transition-colors duration-300 no-underline text-white"
-          >
-            Driver
-          </Link>
         </div>
       </div>
     </nav>

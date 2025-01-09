@@ -34,22 +34,32 @@ const DeleteMaintenancePlan = () => {
   };
 
   return (
-    <div className="bg-[#8CC3CA] text-white text-center py-16">
-      <div className="p-4">
+    <div className="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] text-white text-center py-16 min-h-screen">
+      <div className="max-w-4xl mx-auto bg-[#FFFBF2] p-8 rounded-xl shadow-lg">
         <BackButton />
-        <h1 className="text-3xl my-4">Delete Maintenance Plan</h1>
-        {loading ? <Spinner /> : ""}
-        <div className="flex flex-col items-center border-2 border-sky-400 rounded-xl w-[600px] p-8 mx-auto">
-          <h3 className="text-2xl">
+        <h1 className="text-4xl font-bold text-[#FF5C00] mb-6">
+          Delete Maintenance Plan
+        </h1>
+        {loading && <Spinner />} {/* Show Spinner while loading */}
+        <div className="flex flex-col items-center space-y-6 border-2 border-[#FF8A00] rounded-xl p-8">
+          <h3 className="text-2xl text-[#FF5C00]">
             Are you sure you want to delete this maintenance plan?
           </h3>
-          <button
-            className="p-4 bg-red-600 text-white m-8 w-full"
-            onClick={handleDeleteMaintenancePlan}
-            disabled={loading} // Disable the button when loading
-          >
-            {loading ? "Deleting..." : "Yes, Delete it"}
-          </button>
+          <div className="space-x-4">
+            <button
+              className="p-4 bg-red-600 text-white rounded-lg transition-all hover:bg-red-500 disabled:bg-gray-400"
+              onClick={handleDeleteMaintenancePlan}
+              disabled={loading} // Disable the button when loading
+            >
+              {loading ? "Deleting..." : "Yes, Delete it"}
+            </button>
+            <button
+              className="p-4 bg-gray-300 text-black rounded-lg transition-all hover:bg-gray-400"
+              onClick={() => navigate("/maintenancePlans")} // Cancel the delete
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ const DriverLogin = () => {
       .then((res) => {
         if (res.data.Login) {
           localStorage.setItem("token", res.data.token);
-          navigate("/dashboardDriver");
+          navigate("/dashboradDriver");
           console.log("Navigated to driver dashboard");
         } else {
           navigate("/");

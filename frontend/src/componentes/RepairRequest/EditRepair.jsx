@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "../Spinner";
 
 const EditRepair = () => {
-  // Initialize all state variables with empty strings to prevent uncontrolled-to-controlled warnings
   const [driverName, setDriverName] = useState("");
   const [car, setCar] = useState("");
   const [carId, setCarId] = useState("");
@@ -17,7 +16,6 @@ const EditRepair = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    // Check for the repair ID, if not available, stop fetching
     if (!id) {
       console.error("Invalid repair ID");
       return;
@@ -28,12 +26,12 @@ const EditRepair = () => {
       .get(`http://localhost:5555/requestrepair/${id}`)
       .then((response) => {
         const repairData = response.data;
-        setDriverName(repairData.DriverName); // Ensure no undefined values
-        setCar(repairData.car); // Use snake_case as per backend
-        setCarId(repairData.car_id); // Use snake_case
-        setCarType(repairData.car_type); // Use snake_case
-        setCarModel(repairData.car_model); // Use snake_case
-        setReclamation(repairData.reclamation); // Use snake_case
+        setDriverName(repairData.DriverName || "");
+        setCar(repairData.car || "");
+        setCarId(repairData.car_id || "");
+        setCarType(repairData.car_type || "");
+        setCarModel(repairData.car_model || "");
+        setReclamation(repairData.reclamation || "");
         setLoading(false);
       })
       .catch((error) => {
@@ -45,11 +43,11 @@ const EditRepair = () => {
   const handleEditRepair = () => {
     const data = {
       DriverName: driverName,
-      car: car, // field name matches the backend ('car')
-      car_id: carId, // field name matches the backend ('car_id')
-      car_type: carType, // field name matches the backend ('car_type')
-      car_model: carModel, // field name matches the backend ('car_model')
-      reclamation: reclamation,
+      car,
+      car_id: carId,
+      car_type: carType,
+      car_model: carModel,
+      reclamation,
     };
 
     setLoading(true);
@@ -68,78 +66,113 @@ const EditRepair = () => {
   };
 
   return (
-    <div className="bg-[#8CC3CA] text-white text-center py-16">
-      <div className="p-4">
-        <h1 className="text-3xl my-4">Edit Repair Request</h1>
-        {loading && <Spinner />} {/* Show Spinner when loading */}
-        <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Driver Name</label>
-            <input
-              type="text"
-              value={driverName}
-              onChange={(e) => setDriverName(e.target.value)}
-              placeholder="Enter driver's name"
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
+    <div className="min-h-screen bg-gradient-to-br from-[#1e3c72] to-[#2a8b8b] flex items-center justify-center px-4">
+      <div className="bg-white shadow-xl rounded-lg p-8 max-w-3xl w-full">
+        <h1 className="text-3xl font-bold text-center text-[#1e3c72] mb-8">
+          Edit Repair Request
+        </h1>
+        {loading && <Spinner />} {/* Display spinner while loading */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleEditRepair();
+          }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Driver Name */}
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Driver Name
+              </label>
+              <input
+                type="text"
+                value={driverName}
+                onChange={(e) => setDriverName(e.target.value)}
+                placeholder="Enter driver's name"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e3c72]"
+              />
+            </div>
+            {/* Car */}
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Car
+              </label>
+              <input
+                type="text"
+                value={car}
+                onChange={(e) => setCar(e.target.value)}
+                placeholder="Enter car details"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e3c72]"
+              />
+            </div>
+            {/* Car ID */}
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Car ID
+              </label>
+              <input
+                type="text"
+                value={carId}
+                onChange={(e) => setCarId(e.target.value)}
+                placeholder="Enter car ID"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e3c72]"
+              />
+            </div>
+            {/* Car Type */}
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Car Type
+              </label>
+              <input
+                type="text"
+                value={carType}
+                onChange={(e) => setCarType(e.target.value)}
+                placeholder="Enter car type"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e3c72]"
+              />
+            </div>
+            {/* Car Model */}
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Car Model
+              </label>
+              <input
+                type="text"
+                value={carModel}
+                onChange={(e) => setCarModel(e.target.value)}
+                placeholder="Enter car model"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e3c72]"
+              />
+            </div>
+            {/* Reclamation */}
+            <div>
+              <label className="block text-gray-700 font-medium mb-2">
+                Reclamation
+              </label>
+              <input
+                type="text"
+                value={reclamation}
+                onChange={(e) => setReclamation(e.target.value)}
+                placeholder="Enter reclamation details"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1e3c72]"
+              />
+            </div>
           </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car</label>
-            <input
-              type="text"
-              value={car}
-              onChange={(e) => setCar(e.target.value)}
-              placeholder="Enter car details"
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car ID</label>
-            <input
-              type="text"
-              value={carId}
-              onChange={(e) => setCarId(e.target.value)}
-              placeholder="Enter car ID"
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car Type</label>
-            <input
-              type="text"
-              value={carType}
-              onChange={(e) => setCarType(e.target.value)}
-              placeholder="Enter car type"
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car Model</label>
-            <input
-              type="text"
-              value={carModel}
-              onChange={(e) => setCarModel(e.target.value)}
-              placeholder="Enter car model"
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Reclamation</label>
-            <input
-              type="text"
-              value={reclamation}
-              onChange={(e) => setReclamation(e.target.value)}
-              placeholder="Enter reclamation details"
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
+          {/* Submit Button */}
           <button
-            className="p-2 bg-sky-300 text-white m-8"
-            onClick={handleEditRepair}
+            type="submit"
+            className="w-full mt-6 bg-[#1e3c72] text-white py-3 rounded-lg text-lg font-medium hover:bg-[#2a8b8b] transition-all shadow-lg"
           >
-            Save
+            Save Changes
           </button>
-        </div>
+        </form>
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)} // Navigate back to the last page
+          className="w-full mt-4 bg-gray-300 text-gray-700 py-3 rounded-lg text-lg font-medium hover:bg-gray-400 transition-all shadow-lg"
+        >
+          Back
+        </button>
       </div>
     </div>
   );

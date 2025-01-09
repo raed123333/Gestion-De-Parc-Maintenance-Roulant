@@ -47,7 +47,7 @@ const CreateRepair = () => {
       .then(() => {
         setLoading(false);
         alert("Repair request created successfully");
-        navigate("/dashboardDriver");
+        navigate("/dashboradDriver");
       })
       .catch((error) => {
         setLoading(false);
@@ -65,67 +65,84 @@ const CreateRepair = () => {
   };
 
   return (
-    <div className="bg-[#8CC3CA] text-white text-center py-16">
-      <div className="p-4">
-        <h1 className="text-3xl my-4">Add new Repair Request</h1>
-        {loading ? <Spinner /> : ""} {/* Show Spinner when loading */}
-        <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Driver Name</label>
-            <input
-              type="text"
-              value={driverName}
-              onChange={(e) => setDriverName(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car</label>
-            <input
-              type="text"
-              value={car}
-              onChange={(e) => setCar(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car ID</label>
-            <input
-              type="text"
-              value={carId}
-              onChange={(e) => setCarId(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Car Type</label>
-            <input
-              type="text"
-              value={carType}
-              onChange={(e) => setCarType(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">state</label>
-            <input
-              type="text"
-              value={carModel}
-              onChange={(e) => setCarModel(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <div className="my-4">
-            <label className="text-xl mr-4 text-gray-500">Reclamation</label>
-            <input
-              type="text"
-              value={reclamation}
-              onChange={(e) => setReclamation(e.target.value)}
-              className="border-2 border-gray-500 px-4 py-2 w-full text-black"
-            />
-          </div>
-          <button className="p-2 bg-sky-300 m-8" onClick={handleSaveRepair}>
-            Save
+    <div className="bg-gradient-to-r from-[#1e3c72] to-[#2a8b8b] text-white text-center py-16 min-h-screen">
+      <div className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+        <h1 className="text-4xl font-bold text-[#2a8b8b] mb-6">
+          Add New Repair Request
+        </h1>
+        {loading ? <Spinner /> : ""} {/* Show Spinner while loading */}
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full bg-[#F9FAFB] rounded-xl shadow-md border-collapse">
+            <thead className="bg-[#2a8b8b] text-white">
+              <tr>
+                <th className="p-4 text-left">Driver Name</th>
+                <th className="p-4 text-left">Car</th>
+                <th className="p-4 text-left">Car ID</th>
+                <th className="p-4 text-left">Car Type</th>
+                <th className="p-4 text-left">State</th>
+                <th className="p-4 text-left">Reclamation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="p-4">
+                  <input
+                    type="text"
+                    value={driverName}
+                    onChange={(e) => setDriverName(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-lg w-full text-black"
+                  />
+                </td>
+                <td className="p-4">
+                  <input
+                    type="text"
+                    value={car}
+                    onChange={(e) => setCar(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-lg w-full text-black"
+                  />
+                </td>
+                <td className="p-4">
+                  <input
+                    type="Number"
+                    value={carId}
+                    onChange={(e) => setCarId(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-lg w-full text-black"
+                  />
+                </td>
+                <td className="p-4">
+                  <input
+                    type="text"
+                    value={carType}
+                    onChange={(e) => setCarType(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-lg w-full text-black"
+                  />
+                </td>
+                <td className="p-4">
+                  <input
+                    type="text"
+                    value={carModel}
+                    onChange={(e) => setCarModel(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-lg w-full text-black"
+                  />
+                </td>
+                <td className="p-4">
+                  <input
+                    type="text"
+                    value={reclamation}
+                    onChange={(e) => setReclamation(e.target.value)}
+                    className="border-2 border-gray-300 p-2 rounded-lg w-full text-black"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="mt-6">
+          <button
+            className="p-4 bg-[#2a8b8b] text-white w-full rounded-lg hover:bg-[#1e6f6f] transition-all"
+            onClick={handleSaveRepair}
+          >
+            Save Request
           </button>
         </div>
       </div>

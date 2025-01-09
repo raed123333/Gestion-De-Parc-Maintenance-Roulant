@@ -16,7 +16,7 @@ import CreateRepair from "./componentes/RepairRequest/CreateRepair";
 import DeleteRepair from "./componentes/RepairRequest/DeleteRepair";
 import EditRepair from "./componentes/RepairRequest/EditRepair";
 import DisplayMaintenancePlans from "./Maintenance components/DisplayMaintenancePlans";
-
+import DeleteMaintenancePlan from "./Maintenance components/DeleteMaintenancePlan";
 const App = () => {
   return (
     <BrowserRouter>
@@ -38,6 +38,10 @@ const App = () => {
         <Route path="/deleteRepair/:id" element={<DeleteRepair />} />
         <Route path="/editRepair/:id" element={<EditRepair />} />
         <Route path="/maintenancePlans" element={<DisplayMaintenancePlans />} />
+        <Route
+          path="/maintenancePlans/deleteMaintenancePlan/:id"
+          element={<DeleteMaintenancePlan />}
+        />
       </Routes>
     </BrowserRouter>
   );

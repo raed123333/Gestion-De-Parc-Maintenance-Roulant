@@ -90,7 +90,9 @@ const DisplayMaintenancePlans = () => {
                       <Link to={`/editMaintenancePlan/${plan._id}`}>
                         <AiOutlineEdit className="text-2xl text-yellow-600" />
                       </Link>
-                      <Link to={`/deleteMaintenancePlan/${plan._id}`}>
+                      <Link
+                        to={`/maintenancePlans/deleteMaintenancePlan/${plan._id}`}
+                      >
                         <MdOutlineDelete className="text-2xl text-red-600" />
                       </Link>
                     </div>

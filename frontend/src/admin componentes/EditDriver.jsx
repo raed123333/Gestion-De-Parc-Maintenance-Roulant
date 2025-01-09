@@ -73,7 +73,7 @@ const EditDriver = () => {
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
+            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
           />
         </div>
         {/* Last Name Field */}
@@ -83,7 +83,7 @@ const EditDriver = () => {
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
+            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
           />
         </div>
         {/* Registration Number Field */}
@@ -95,7 +95,7 @@ const EditDriver = () => {
             type="text"
             value={registrationNumber}
             onChange={(e) => setRegistrationNumber(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
+            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
           />
         </div>
         {/* Email Field */}
@@ -105,7 +105,7 @@ const EditDriver = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
+            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
           />
         </div>
         {/* Password Field */}
@@ -115,7 +115,7 @@ const EditDriver = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border-2 border-gray-500 px-4 py-2 w-full"
+            className="border-2 border-gray-500 px-4 py-2 w-full text-black"
           />
         </div>
         <button className="p-2 bg-sky-300 m-8" onClick={handleEditDriver}>

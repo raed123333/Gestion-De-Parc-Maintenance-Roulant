@@ -8,12 +8,12 @@ const NavBarDriver = () => {
       <div className="container py-2 flex justify-center md:justify-between items-center  ">
         <div className="text-2xl font-bold hidden md:inline ">Driver Panel</div>
         <div className=" space-x-6 text-white  ">
-          <a href="#" className="text-white no-underline ">
+          <Link to="/" className="text-white no-underline ">
             Home
-          </a>
-          <a href="#services" className="text-white no-underline ">
-            Services
-          </a>
+          </Link>
+          <Link to="/createRepair" className="text-white no-underline ">
+            Create Repair
+          </Link>
           <a href="#Footer" className=" text-white no-underline ">
             About Us
           </a>

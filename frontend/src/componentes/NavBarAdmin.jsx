@@ -11,9 +11,9 @@ const NavBarAdmin = () => {
           <Link to="/" className="text-white no-underline ">
             Home
           </Link>
-          <a href="#services" className="text-white no-underline ">
-            Services
-          </a>
+          <Link to="/Repair" className="text-white no-underline ">
+            Repair
+          </Link>
           <Link
             to="/dashboradAdmin/adminTable"
             className=" text-white no-underline "

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { MdOutlineAddBox } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
 import Spinner from "../Spinner";
@@ -39,9 +38,6 @@ const RepairDisplay = () => {
       <div className="p-4">
         <div className="flex justify-between items-center">
           <h1 className="text-3xl my-8">Repair List</h1>
-          <Link to="/createRepair">
-            <MdOutlineAddBox className="text-sky-800 text-4xl" />
-          </Link>
         </div>
 
         {loading ? (
@@ -57,9 +53,7 @@ const RepairDisplay = () => {
                 <th className="border border-slate-600 rounded-md">Car</th>
                 <th className="border border-slate-600 rounded-md">Car ID</th>
                 <th className="border border-slate-600 rounded-md">Car Type</th>
-                <th className="border border-slate-600 rounded-md">
-                  Car Model
-                </th>
+                <th className="border border-slate-600 rounded-md">State</th>
                 <th className="border border-slate-600 rounded-md">
                   Reclamation
                 </th>
@@ -92,7 +86,7 @@ const RepairDisplay = () => {
                   </td>
                   <td className="border border-slate-700 rounded-md text-center">
                     <div className="flex justify-center gap-x-4">
-                      <Link to={`/dashboardAdmin/editRepair/${repair._id}`}>
+                      <Link to={`/editRepair/${repair._id}`}>
                         <AiOutlineEdit className="text-2xl text-yellow-600" />
                       </Link>
                       <Link to={`/deleteRepair/${repair._id}`}>
